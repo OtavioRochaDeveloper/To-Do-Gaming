@@ -1,3 +1,4 @@
+import model.tarefas.Categoria;
 import service.ListaDeTarefas;
 
 import java.util.Scanner;
@@ -24,9 +25,25 @@ public class Main {
 
             switch (opcao) {
                 case 1:
+                    System.out.println("\nCategorias disponiveis: ");
+                    Categoria[] categorias = Categoria.getCategoriasPadrao();
+                    for (int i = 0; i < categorias.length; i++) {
+                        System.out.println((i + 1) + ", " + categorias[i]);
+                    }
                     System.out.println("Digite o nome da missao: ");
                     String nome = scanner.nextLine();
-                    lista.adicionarTarefa(nome);
+                    System.out.println("\nDigite a descrição da missao: ");
+                    String descricao = scanner.nextLine();
+                    System.out.println("Escolha o numero da categoria: ");
+                    int catIndex = scanner.nextInt() - 1;
+                    scanner.nextLine();
+
+                    Categoria categoria = categorias[catIndex];
+                    System.out.println("Digite a dificuldade (1-5): ");
+                    int dificuldade = scanner.nextInt();
+                    scanner.nextLine();
+
+                    lista.adicionarTarefa(nome, descricao, dificuldade, categoria);
                     break;
                 case 2:
                     lista.mostrarTarefas();
@@ -44,6 +61,7 @@ public class Main {
                 case 5:
                     System.out.println("Digite o numero da missao que deseja editar: ");
                     int indiceE = scanner.nextInt() - 1;
+                    scanner.nextLine();
                     System.out.println("Digite o novo nome da missao: ");
                     String novoNome = scanner.nextLine();
                     lista.editarTarefa(indiceE, novoNome);

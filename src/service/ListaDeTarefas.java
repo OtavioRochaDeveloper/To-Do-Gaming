@@ -1,15 +1,15 @@
 package service;
 
-import model.Tarefa;
-
+import model.tarefas.Categoria;
+import model.tarefas.Tarefa;
 import java.util.ArrayList;
 
 public class ListaDeTarefas {
     private ArrayList<Tarefa> tarefas = new ArrayList<>();
 
     //adiciona uma nova tarefa
-    public void adicionarTarefa(String nome) {
-        Tarefa nova = new Tarefa(nome);
+    public void adicionarTarefa(String nome, String descricao, int dificuldade, Categoria Categoria) {
+        Tarefa nova = new Tarefa(nome, descricao, dificuldade, Categoria);
         tarefas.add(nova);
         System.out.println("Nova missao adicionada: " + nome);
     }
@@ -43,6 +43,7 @@ public class ListaDeTarefas {
         }
     }
 
+    //Editar uma tarefa 
     public void editarTarefa(int indice, String nome) {
         if (indice >= 0 && indice < tarefas.size()) {
             Tarefa tarefa = tarefas.get(indice);
@@ -51,5 +52,8 @@ public class ListaDeTarefas {
         } else {
             System.out.println("Missao nao encontrada! ");
         }
+
+
     }
+
 }

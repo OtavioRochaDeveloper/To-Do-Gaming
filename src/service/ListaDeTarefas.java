@@ -24,13 +24,14 @@ public class ListaDeTarefas {
     }
 
     //conclui uma tarefa (Marcar como feita)
-    public void concluirTarefas(int indice) {
+    public int concluirTarefas(int indice) {
         if (indice >= 0 && indice < tarefas.size()) {
             tarefas.get(indice).concluir();
             System.out.println("Missao Concluida: " + tarefas.get(indice).getNome());
         } else {
             System.out.println("Missao nao encontrada");
         }
+        return indice;
     }
 
     // remove uma tarefa
@@ -56,4 +57,6 @@ public class ListaDeTarefas {
 
     }
 
+    public void exibirEstatisticas() {
+    }
 }
